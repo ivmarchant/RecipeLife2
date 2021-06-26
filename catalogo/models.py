@@ -30,8 +30,10 @@ class Comuna(models.Model):
 class Negocio(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='negocios')
     nombre = models.CharField(max_length=200)
+    direccion = models.TextField(max_length=1000,default='halo')
     descripcion = models.TextField(max_length=1000)
-    image = models.ImageField(default='example.png')
+    web = models.TextField(max_length=1000,default='halo')
+    imagen = models.ImageField(null=True, blank=True)
     tipo = models.ForeignKey('TipoNego', on_delete=models.SET_NULL, null=True, blank=False)
     comuna = models.ForeignKey('Comuna', on_delete=models.SET_NULL, null=True, blank=False)
 

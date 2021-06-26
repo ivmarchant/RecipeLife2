@@ -1,8 +1,34 @@
 from django import forms
+from django.db import models
 from django.forms import ModelForm
-from .models import Receta, Tipo
+from .models import *
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+
+#NEGOCIO
+class NegocioForm(forms.ModelForm):
+    nombre = forms.CharField(label='Nombre de Empresa')
+    direccion = forms.CharField(label='Direccion')
+    web = forms.CharField(label='Web/RedSocial')
+    descripcion =forms.CharField(label='Descripcion')
+    imagen = forms.ImageField(label='Imagen',
+            widget=forms.ClearableFileInput(
+            attrs={
+                'class':'form-control' 
+            }
+            ))
+    tipo = forms.ModelChoiceField(queryset=TipoNego.objects.all(), label='TipoNego',
+            widget=forms.Select)
+    comuna = forms.ModelChoiceField(queryset=Comuna.objects.all(), label='Comuna',
+            widget=forms.Select)
+
+    class Meta:
+        model = Negocio
+        fields = ('nombre','direccion','web','descripcion','imagen','tipo','comuna')
+
+#FIN NEGOCIO
+
+
 
 class TipoForm(forms.ModelForm):
     nombre = forms.CharField(label='Nombre',max_length=200, widget=forms.TextInput(

@@ -1,7 +1,9 @@
+from django import forms
 from django.shortcuts import render, redirect
 from . models import *
-from . forms import RecetaForm, UserRegisterForm
+from . forms import NegocioForm, RecetaForm, UserRegisterForm
 from django.views import generic
+from django.shortcuts import get_object_or_404, render, redirect
 
 from django.core.mail import send_mail
 from django.conf import settings
@@ -186,3 +188,17 @@ def proveView(request):
         request, 
         'vista_proveedores.html',
         context )
+
+def provedor(request):
+    current_user = get_object_or_404(User, pk=request.user.pk)
+    if request.method == 'POST':
+        form = NegocioForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user = current_user
+            post.save()
+            #messages
+            return redirect('perfil')
+    else:
+        form = NegocioForm()
+    return render(request, 'crear_proveedor.html',{'form':form})
