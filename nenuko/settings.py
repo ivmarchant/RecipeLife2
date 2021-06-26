@@ -137,8 +137,8 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST="smtp.gmail.com"
 EMAIL_USE_TLS=True
 EMAIL_PORT=587
-EMAIL_HOST_USER="recipelife379@gmail.com"
-EMAIL_HOST_PASSWORD="recipe_life-1390"
+EMAIL_HOST_USER="huntersupplier2@gmail.com"
+EMAIL_HOST_PASSWORD="Nico12345"
 
 #URL DONDE SE ACCEDE A LA IMAGENES
 MEDIA_URL = "/media/"

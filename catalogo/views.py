@@ -69,7 +69,7 @@ def contacto(request):
         subject=request.POST['asunto']
         message="Remitente: " + request.POST['email'] + " Nombre: " + request.POST['nombre'] + ' Mensaje: ' + request.POST['msg']
         email_from=settings.EMAIL_HOST_USER
-        recipent_list=['recipelife379@gmail.com']
+        recipent_list=['huntersupplier2@gmail.com']
         send_mail(subject,message,email_from,recipent_list)
         messages.success(request, f'Correo enviado')
     return render(request, "contacto.html")

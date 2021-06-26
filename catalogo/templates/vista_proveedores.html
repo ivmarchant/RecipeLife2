@@ -4,7 +4,7 @@
     <ul>
   
       <li><a class="nav-link" href="{% url 'index' %}">Inicio</a></li>
-      <li><a class="nav-link" href="{% url 'vista_proveedores' %}">Negocios</a></li>
+      <li><a class="nav-link" href="{% url 'vista_proveedores' %}">Proveedores</a></li>
       <li class="active"><a href="#contact">Contáctenos</a></li>
   
       {% if user.is_authenticated %}
@@ -22,8 +22,21 @@
   </nav><!-- .nav-menu -->
   {% endblock %}
   {% block content %}
-  <br><br><br>
-  <br><br><br>
+  <div class="p-5">
+    <br><br><br>
+    <br><br><br>
+    <div class="section-title">
+        <h2>Detalles</h2>
+        <p>Proveedores</p>
+    </div>
+    <div class="php-email-form">
+        {% if user.is_authenticated %}
+        <a class="btn" href="{% url 'crear_proveedor' %}" style="float: left; font-size: 14px; background-color: #cda45e;">Agregar
+            Proveedor
+            <span class="glyphicon glyphicon-plus"></span></a>
+        {% else %}{% endif %}
+    </div>
+</div>
   <div class="row p-5">
     {% for negocio in num_negocios %}
     <div class="col-md-4">

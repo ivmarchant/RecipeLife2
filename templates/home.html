@@ -10,7 +10,7 @@
     <li><a href="#specials">Especiales</a></li>
     <li><a href="#contact">Encuentranos</a></li>
     <li><a href="{% url 'contacto' %}">Contáctenos</a></li>
-    <li><a class="nav-link" href="{% url 'recetas' %}">Recetas</a></li>
+    <li><a class="nav-link" href="{% url 'vista_proveedores' %}">Proveedores</a></li>
 
     {% if user.is_authenticated %}
     {% if user.is_staff %}<li><a href="{% url 'admin' %}">Admin</a></li>{% else %}{% endif %}
@@ -62,7 +62,7 @@
           <h1>Bienvenido <span>{{ user.username }}</span></h1>
 
           <div class="btns">
-            <a href="{% url 'recetas' %}" class="btn-menu animated fadeInUp scrollto">Recetas</a>
+            <a href="{% url 'vista_proveedores' %}" class="btn-menu animated fadeInUp scrollto">Proveedores</a>
             <!--<a href="#book-a-table" class="btn-book animated fadeInUp scrollto">Añadir Receta</a>-->
           </div>
         </div>

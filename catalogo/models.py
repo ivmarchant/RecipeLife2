@@ -30,7 +30,7 @@ class Comuna(models.Model):
 class Negocio(models.Model):
     nombre = models.CharField(max_length=200)
     direccion = models.TextField(max_length=1000)
-    descripcion = models.TextField(max_length=1000)
+    descripcion = models.TextField(max_length=1000, help_text='Descripcion,Horario y Dias de atencion ')
     web = models.TextField(max_length=1000)
     imagen = models.ImageField(null=True, blank=True, default='descarga.png')
     tipo = models.ForeignKey('TipoNego', on_delete=models.SET_NULL, null=True, blank=False)

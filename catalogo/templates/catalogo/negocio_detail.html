@@ -1,9 +1,30 @@
-{% extends "base_generic.html" %}
+{% extends 'base_generic.html' %}
+{% block navbar %}
+<nav class="nav-menu d-none d-lg-block">
+  <ul>
 
+    <li class="active"><a class="nav-link" href="{% url 'index' %}">Inicio</a></li>
+    <li><a class="nav-link" href="{% url 'vista_proveedores' %}">Proveedores</a></li>
+
+    {% if user.is_authenticated %}
+    {% if user.is_staff %}<li><a href="{% url 'admin' %}">Admin</a></li>{% else %}{% endif %}
+    <li class="book-a-table text-center"><a href="#">{{ user.username }}</a></li>
+    <li><a href="{% url 'logout'%}?next={{request.path}}">Cerrar sesión</a></li>
+
+    {% else %}
+    <li class="book-a-table text-center"><a href="{% url 'login' %}">Iniciar Sesion</a></li>
+    <li><a href="{% url 'registro_usuarios' %}">Registro</a></li>
+
+    {% endif %}
+
+  </ul>
+</nav><!-- .nav-menu -->
+{% endblock %}
 {% block content %}
 
 <br><br><br><br><br>
 {% load static %}
+
 <header class="masthead">
     <div class="container d-flex flex-column ">
         <h1 class="page-section-heading text-uppercase text-secondary mb-0"> {{ negocio.nombre}}
@@ -48,18 +69,23 @@
 
             </div>
         </div>
-
+        <div class="section-title">
+            <h2>Detalles</h2>
+            <p>Productos</p>
+        </div>
         <div class="row p-5">
-            {% for producto in num_producto %}
             <div class="col-md-4">
                 <div class="card mb-2 " style="background-color: #0c0b09;">
-                    <img class="card-img-top" src=" {{ producto.imagen.url }}" width="300" height="300">
+                    <img class="card-img-top" src="{% static 'img/descarga.jpg' %}" width="300" height="300">
                     <div class="card-body">
-                        <h5 style="color: #cda45e;" class="card-title text-uppercase">{{ producto.titulo }}</h5>
+                        <h5 style="color: #cda45e;" class="card-title text-uppercase">Botella Coca-Cola 1,5L </h5>
+                        <p style="color: #cda45e;"> Precio: 1200xMayor </p>
+                        <a href="" class="btn" style="float: right; background-color: #cda45e;">
+                            Agregar al carro
+                        </a>
                     </div>
                 </div>
             </div>
-            {% endfor %}
         </div>
 </header>
 

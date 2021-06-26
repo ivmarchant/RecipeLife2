@@ -45,7 +45,7 @@
           <h1>Bienvenido a <span>SupplierHunter</span></h1>
 
           <div class="btns">
-            <a href="{% url 'recetas' %}" class="btn-menu animated fadeInUp scrollto">Recetas</a>
+            <a href="{% url 'vista_proveedores' %}" class="btn-menu animated fadeInUp scrollto">Proveedores</a>
             <!--<a href="#book-a-table" class="btn-book animated fadeInUp scrollto">Añadir Receta</a>-->
           </div>
         </div>
@@ -67,10 +67,10 @@
             </div>
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-            <h3><i>"La comida más rica es la que se hace en casa"</i></h3>
+            <h3><i>"Debes abastecer tu local o si no terminara fatal"</i></h3>
             <p class="font-italic">
-              RecipeLife es una página web orientada a la búsqueda y creación de recetas, además de promocionar un sitio
-              en el cual el usuario podrá encontrar los ingredientes necesarios para la preparación al menor precio.
+              SupplierHunter es un sitio web orientada a la búsqueda de proveedores confiables para las
+              Pymes y que asi estos puedan abastecerse sin problemas. 
             </p>
           </div>
         </div>
@@ -93,7 +93,7 @@
             <div class="box" data-aos="zoom-in" data-aos-delay="100">
               <span>01</span>
               <h4>Barato</h4>
-              <p>En nuestro sitio encontrara los ingredientes más baratos para sus recetas.</p>
+              <p>Encuentre el mejor proveedor con los productos al mejor precio.</p>
             </div>
           </div>
 
@@ -101,7 +101,7 @@
             <div class="box" data-aos="zoom-in" data-aos-delay="200">
               <span>02</span>
               <h4>Rápido</h4>
-              <p>No necesitará comparar precios en otros lados, ya que nuestra página lo hará por usted.</p>
+              <p>No tendras que buscar en otros sitios, aqui tenemos todo lo que necesitaras.</p>
             </div>
           </div>
 
@@ -109,7 +109,7 @@
             <div class="box" data-aos="zoom-in" data-aos-delay="300">
               <span>03</span>
               <h4> Intuitivo</h4>
-              <p>No necesitaras tutoriales, ya que nuestra pagina es muy intuitiva y de simple de uso. </p>
+              <p>No necesitaras tutoriales, nuestro sitio es de uso simple para todos.</p>
             </div>
           </div>
 
@@ -135,16 +135,16 @@
                 <a class="nav-link active show" data-toggle="tab" href="#tab-1">Coca-Cola</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#tab-2">Bavarois de frutilla Chileno</a>
+                <a class="nav-link" data-toggle="tab" href="#tab-2">Carozzi</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#tab-3">Alfajores de Maicena</a>
+                <a class="nav-link" data-toggle="tab" href="#tab-3">Kellogg's</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#tab-4">Salmon al horno con verduras</a>
+                <a class="nav-link" data-toggle="tab" href="#tab-4">Unilever</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#tab-5">Papas a la Huancaína</a>
+                <a class="nav-link" data-toggle="tab" href="#tab-5">Compañía de Cervecerías Unidas</a>
               </li>
             </ul>
           </div>
@@ -167,62 +167,53 @@
               <div class="tab-pane" id="tab-2">
                 <div class="row">
                   <div class="col-lg-8 details order-2 order-lg-1">
-                    <h3><i>"Otra deliciosa forma de comer frutillas"</i></h3>
-                    <p class="font-italic">Una receta clásica, modernizada. El bavarois de frutilla es un postre
-                      muy común en las casas chilenas. En esta receta en vez de usar gelatina de frutilla,
-                      use frutillas de verdad y gelatina sin sabor. Como el dulzor de la fruta varía, les recomiendo
-                      probar la mezcla antes de agregarle la gelatina para verificar que este del sabor apropiado.</p>
+                    <h3><i>"Carozzi me encantaa"</i></h3>
+                    <p class="font-italic">Carozzi Corp es una empresa multinacional chilena, propiedad de la familia Bofill, 
+                                           especializada en la industria alimenticia y dueña de un gran liderazgo en los mercados 
+                                           nacional e internacional. Es uno de los conglomerados más grandes de Latinoamérica y alcanza 
+                                           una facturación anual de 1.247 millones de dólares.</p>
                   </div>
                   <div class="col-lg-4 text-center order-1 order-lg-2">
-                    <img src="{% static 'img/Fruti.jpg' %}" alt="" class="img-fluid">
+                    <img src="{% static 'img/caro.jpg' %}" alt="" class="img-fluid">
                   </div>
                 </div>
               </div>
               <div class="tab-pane" id="tab-3">
                 <div class="row">
                   <div class="col-lg-8 details order-2 order-lg-1">
-                    <h3><i>"Si te gusta lo dulce te recomendamos esto"</i></h3>
-                    <p class="font-italic">Los alfajores en Argentina son un ícono de las golosinas, existen de todos
-                      los sabores
-                      y todas las manera imaginables (chocolate, con fruta, mousse, glaseado, etc) pero hay
-                      uno que es el más tradicional de todos… el “Alfajor de Maicena”!!</p>
+                    <h3><i>"Vivimos para Nutrirte"</i></h3>
+                    <p class="font-italic">The Kellogg Company es una compañía multinacional agroalimentaria estadounidense.
+                                           Elabora principalmente alimentos para el desayuno, cereales y galletas. Tiene su sede 
+                                           central en Battle Creek, Míchigan, Estados Unidos.</p>
                   </div>
                   <div class="col-lg-4 text-center order-1 order-lg-2">
-                    <img src="{% static 'img/alfa.jpg' %}" alt="" class="img-fluid">
+                    <img src="{% static 'img/kello.jpg' %}" alt="" class="img-fluid">
                   </div>
                 </div>
               </div>
               <div class="tab-pane" id="tab-4">
                 <div class="row">
                   <div class="col-lg-8 details order-2 order-lg-1">
-                    <h3>"Hay muchos peces en el mar, pero ninguno tan rico como el salmón"</h3>
-                    <p class="font-italic"> El salmon al horno con verduras es una deliciosa manera de preparar este
-                      pescado,
-                      con alto contenido de ácidos grasos Omega 3. Es una receta muy facil de hacer, rapida,
-                      saludable y que apenas conlleva esfuerzo. El horno se encargará de todo.Como resultado,
-                      obtendrás este cotizado pescado azul, acompañado de una deliciosa guarnición de verdura.</p>
+                    <h3>"Crear un futuro mejor día a día"</h3>
+                    <p class="font-italic"> Unilever es una empresa multinacional británico-neerlandesa creada en 1929 como resultado
+                                            de la fusión de Margarine Unie, compañía neerlandesa de margarina, y Lever Brothers, fabricante 
+                                            inglés de jabones.</p>
 
                   </div>
                   <div class="col-lg-4 text-center order-1 order-lg-2">
-                    <img src="{% static 'img/salmon.jpg' %}" alt="" class="img-fluid">
+                    <img src="{% static 'img/uni.jpg' %}" alt="" class="img-fluid">
                   </div>
                 </div>
               </div>
               <div class="tab-pane" id="tab-5">
                 <div class="row">
                   <div class="col-lg-8 details order-2 order-lg-1">
-                    <h3>"Si te gusta la comida internacional prueba estas papas al más puro estilo Peruano"</h3>
-                    <p class="font-italic">El Perú le brindó las papas al mundo. Y este plato a base de papas que se
-                      prepara en Huancayo
-                      es una de las botanas (aperitivos) de las tierras altas del Perú que goza de mayor fama. Es muy
-                      característico de la cocina indígena, debido especialmente al uso del palillo, una hierba
-                      aromática
-                      local que le da un color amarillo brillante a los alimentos y que se puede sustituir con cúrcuma.
-                    </p>
-
+                    <h3>"Abre tu mundo"</h3>
+                    <p class="font-italic">La Compañía de Cervecerías Unidas, también conocida por su acrónimo CCU,
+                                           es una empresa chilena productora de bebidas, fundada el 8 de enero de 1902.</p>
                   </div>
                   <div class="col-lg-4 text-center order-1 order-lg-2">
-                    <img src="{% static 'img/papa.jpg' %}" alt="" class="img-fluid">
+                    <img src="{% static 'img/ccu.jpg' %}" alt="" class="img-fluid">
                   </div>
                 </div>
               </div>
@@ -263,7 +254,7 @@
               <div class="email">
                 <i class="icofont-envelope"></i>
                 <h4>Email:</h4>
-                <p>recipelife379@gmail.com</p>
+                <p>huntersupplier2@gmail.com</p>
               </div>
 
               <div class="phone">
