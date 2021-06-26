@@ -34,6 +34,14 @@ def admin(request):
         request,
         'admin.html',
     )
+def negocios(request):
+    num_negocios=Negocio.objects.all()
+
+    return render(
+        request,
+        'vista_proveedores.html',
+        context={'num_negocios':num_negocios},
+    )
 
 #Preguntas
 
@@ -168,37 +176,29 @@ def eliminar_recetas(request, id):
     return redirect(to="listado_recetas") 
 
 #PROVEDOORES
-def perfil(request, username=None):
-    current_user = request.user
-    if username and username != current_user.username:
-        user = User.objects.get(username=username)
-        negocios = user.negocios.all()
-    else:
-        negocios = current_user.negocios.all()
-        user = current_user
-    return render(
-        request, 
-        'perfil.html',
-        {'user':user, 'negocios':negocios})
 
-def proveView(request):
-    negocios = Negocio.objects.all()
-    context = {'negocios':negocios }
+def listado_negocios(request):
+    negocios= Negocio.objects.all()
+    data = {
+        'negocios':negocios
+    }
     return render(
-        request, 
-        'vista_proveedores.html',
-        context )
+        request,
+        'vista_proveedores.html',data
+    )
 
-def provedor(request):
-    current_user = get_object_or_404(User, pk=request.user.pk)
+def crear_negocios(request):
+    data = {
+        'form' :NegocioForm()
+    }
+
     if request.method == 'POST':
-        form = NegocioForm(request.POST)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.user = current_user
-            post.save()
-            #messages
-            return redirect('perfil')
-    else:
-        form = NegocioForm()
-    return render(request, 'crear_proveedor.html',{'form':form})
+        formulario = NegocioForm(request.POST, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            messages.success(request, f'Negocio creado')
+            return redirect(to="index")
+    return render(
+        request,
+        'crear_proveedor.html', data
+    )

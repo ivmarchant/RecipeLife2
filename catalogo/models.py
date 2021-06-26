@@ -28,17 +28,20 @@ class Comuna(models.Model):
 		return self.nombre
 
 class Negocio(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='negocios')
     nombre = models.CharField(max_length=200)
-    direccion = models.TextField(max_length=1000,default='halo')
+    direccion = models.TextField(max_length=1000)
     descripcion = models.TextField(max_length=1000)
-    web = models.TextField(max_length=1000,default='halo')
+    web = models.TextField(max_length=1000)
     imagen = models.ImageField(null=True, blank=True)
     tipo = models.ForeignKey('TipoNego', on_delete=models.SET_NULL, null=True, blank=False)
     comuna = models.ForeignKey('Comuna', on_delete=models.SET_NULL, null=True, blank=False)
 
     def __str__(self):
-        return f'{self.user.username}: {self.descripcion}'
+        return self.nombre
+
+    def get_absolute_url(self):
+        """Returns the url to access a detail record for this manga."""
+        return reverse('negocio_detail', args=[str(self.id)])
 
 
 #FIN PROVEDORES

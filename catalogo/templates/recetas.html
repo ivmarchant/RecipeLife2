@@ -68,6 +68,21 @@
         </div>
         {% endfor %}
     </div>
+    <div class="row p-5">
+        {% for Negocios in num_negocios %}
+        <div class="col-md-4">
+            <div class="card mb-2 " style="background-color: #0c0b09;">
+                <img class="card-img-top" src=" {{ Negocios.imagen.url }}" width="300" height="300">
+                <div class="card-body">
+                    <h5 style="color: #cda45e;" class="card-title text-uppercase">{{ Negocios.nombre }}</h5>
+                    <a href="{% url 'receta_detail' receta.pk %}" class="btn" style="float: right; background-color: #cda45e;">
+                        Ver más
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 
 
 </body>

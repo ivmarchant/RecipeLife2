@@ -1,24 +1,44 @@
 from django import forms
 from django.db import models
-from django.forms import ModelForm
+from django.forms import ModelForm, fields
 from .models import *
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 #NEGOCIO
 class NegocioForm(forms.ModelForm):
-    nombre = forms.CharField(label='Nombre de Empresa')
-    direccion = forms.CharField(label='Direccion')
-    web = forms.CharField(label='Web/RedSocial')
-    descripcion =forms.CharField(label='Descripcion')
+    nombre = forms.CharField(label='Nombre de Empresa',max_length=200, widget=forms.TextInput(
+        attrs={
+            'class':'form-control'
+        }
+    ))
+    direccion = forms.CharField(label='Direccion',max_length=200, widget=forms.TextInput(
+        attrs={
+            'class':'form-control'
+        }
+    ))
+    web = forms.CharField(label='Web/RedSocial',max_length=200, widget=forms.TextInput(
+        attrs={
+            'class':'form-control'
+        }
+    ))
+    descripcion =forms.CharField(label='Descripcion', max_length=1000, widget=forms.Textarea(
+        attrs={
+            'class':'form-control'
+        }
+    ))
     imagen = forms.ImageField(label='Imagen',
             widget=forms.ClearableFileInput(
             attrs={
                 'class':'form-control' 
             }
             ))
-    tipo = forms.ModelChoiceField(queryset=TipoNego.objects.all(), label='TipoNego',
-            widget=forms.Select)
+    tipo = forms.ModelChoiceField(queryset=TipoNego.objects.all(), label='Tipo Negocio',
+            widget=forms.Select(
+            attrs={
+                'class':'form-control' 
+            }
+            ))
     comuna = forms.ModelChoiceField(queryset=Comuna.objects.all(), label='Comuna',
             widget=forms.Select)
 

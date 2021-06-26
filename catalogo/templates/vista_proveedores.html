@@ -24,19 +24,23 @@
   {% block content %}
   <br><br><br>
   <br><br><br>
-    <div class="row p-5">
-        {% for negocio in negocios %}
-            <div class="col-md-2" >
-                <div class="card border-secondary mb-3" style="background-color: #0c0b09;">
-                    <img class="card-img-top" src="{{ negocio.image.url }}" width="160" height="180" >
-                    <div class="card-body">
-                        <h4  class="card-title"><a href="{% url 'perfil' negocio.user.username %}">{{ negocio.nombre }}</a></h4>
-                        <a style="color:#cda45e;">{{ negocio.descripcion }}</a>
-                    </div>
-                </div>
+  <div class="row p-5">
+    {% for negocios in num_negocios %}
+    <div class="col-md-4">
+        <div class="card mb-2 " style="background-color: #0c0b09;">
+            <img class="card-img-top" src=" {{ negocios.imagen.url }}" width="300" height="300">
+            <div class="card-body">
+                <h5 style="color: #cda45e;" class="card-title text-uppercase">{{ negocios.nombre }}</h5>
+                <a href="{% url 'receta_detail' receta.pk %}" class="btn" style="float: right; background-color: #cda45e;">
+                    Ver más
+                </a>
             </div>
-            {% endfor %}
         </div>
+    </div>
+    {% endfor %}
+    </div>
+</body>
 
+</html>
 
-  {% endblock %}
+{% endblock %}
