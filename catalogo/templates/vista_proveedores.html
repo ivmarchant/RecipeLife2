@@ -31,6 +31,10 @@
             <img class="card-img-top" src=" {{ negocio.imagen.url }}" width="300" height="300">
             <div class="card-body">
                 <h5 style="color: #cda45e;" class="card-title text-uppercase">{{ negocio.nombre }}</h5>
+                <p style="color: #cda45e;">{{ negocio.comuna }}</p>
+                <a href="{% url 'negocio_detail' negocio.pk %}" class="btn" style="float: right; background-color: #cda45e;">
+                    Ver más
+                </a>
             </div>
         </div>
     </div>

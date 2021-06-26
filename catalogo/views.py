@@ -1,7 +1,7 @@
 from django import forms
 from django.shortcuts import render, redirect
-from . models import *
-from . forms import NegocioForm, RecetaForm, UserRegisterForm
+from . models import Producto, Negocio
+from . forms import NegocioForm, ProductoForm, UserRegisterForm
 from django.views import generic
 from django.shortcuts import get_object_or_404, render, redirect
 
@@ -20,13 +20,13 @@ def index(request):
         'index.html',
     )
 
-def recetas(request):
-    num_recetas=Receta.objects.all()
+def producto(request):
+    num_producto=Producto.objects.all()
 
     return render(
         request,
-        'recetas.html',
-        context={'num_recetas':num_recetas},
+        'producto.html',
+        context={'num_producto':num_producto},
     )
 
 def admin(request):
@@ -34,6 +34,14 @@ def admin(request):
         request,
         'admin.html',
     )
+
+
+def recetas(request):
+    return render(
+        request,
+        'recetas.html',
+    )
+
 def negocios(request):
     num_negocios=Negocio.objects.all()
 
@@ -43,6 +51,11 @@ def negocios(request):
         context={'num_negocios':num_negocios},
     )
 
+
+class NegocioDetailView(generic.DetailView):
+    model = Negocio
+
+
 #Preguntas
 
 def preguntas(request):
@@ -50,9 +63,6 @@ def preguntas(request):
         request,
         'preguntas.html',
     )
-
-class RecetaDetailView(generic.DetailView):
-    model = Receta
 
 def contacto(request):
     if request.method=="POST":
@@ -123,57 +133,57 @@ def eliminar_usuario(request, id):
 
 # ================= CRUD Recetas =================#
 
-def listado_recetas(request):
-    recetas= Receta.objects.all()
+def listado_producto(request):
+    producto= Producto.objects.all()
     data = {
-        'recetas':recetas
+        'producto':producto
     }
     return render(
         request,
-        'listado_recetas.html',data
+        'listado_producto.html',data
     )
 
 
-def crear_recetas(request):
+def crear_producto(request):
     data = {
-        'form' :RecetaForm()
+        'form' :ProductoForm()
     }
 
     if request.method == 'POST':
-        formulario = RecetaForm(request.POST, files=request.FILES)
+        formulario = ProductoForm(request.POST, files=request.FILES)
         if formulario.is_valid():
             formulario.save()
-            messages.success(request, f'Receta creada')
+            messages.success(request, f'Producto creada')
             return redirect(to="index")
     return render(
         request,
-        'nueva_receta.html', data
+        'nuevo_producto.html', data
     )
 
 
-def modificar_recetas(request, id):
-    recetas= Receta.objects.get(id=id)
+def modificar_producto(request, id):
+    producto= Producto.objects.get(id=id)
     data = {
-        'form':RecetaForm(instance=recetas)
+        'form':ProductoForm(instance=producto)
     }
 
     if request.method == 'POST':
-        formulario = RecetaForm(data=request.POST, instance=recetas, files=request.FILES)
+        formulario = ProductoForm(data=request.POST, instance=producto, files=request.FILES)
         if formulario.is_valid():
             formulario.save()
-            messages.success(request, f'Receta modificada exitosamente')
-            data['form'] = RecetaForm(instance=Receta.objects.get(id=id))
+            messages.success(request, f'Producto modificada exitosamente')
+            data['form'] = ProductoForm(instance=Producto.objects.get(id=id))
     return render (
         request,
-        'modificar_recetas.html',data
+        'modificar_producto.html',data
     )
 
 
-def eliminar_recetas(request, id):
-    recetas =Receta.objects.get(id=id)
-    recetas.delete()
-    messages.success(request, f'Receta eliminada')
-    return redirect(to="listado_recetas") 
+def eliminar_producto(request, id):
+    producto =Producto.objects.get(id=id)
+    producto.delete()
+    messages.success(request, f'Producto eliminada')
+    return redirect(to="listado_producto") 
 
 #PROVEDOORES
 

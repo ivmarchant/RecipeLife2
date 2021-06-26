@@ -1,0 +1,67 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<br><br><br><br><br>
+{% load static %}
+<header class="masthead">
+    <div class="container d-flex flex-column ">
+        <h1 class="page-section-heading text-uppercase text-secondary mb-0"> {{ negocio.nombre}}
+
+        </h1>
+
+
+        <div class="container p-5">
+
+            <div class="">
+                <p class="centrado"><img src="{{ negocio.imagen.url }}" width="640" height="480"></p>
+                <br>
+                <h3 class="descripcion text-secondary">Dirección</h3>
+                <br>
+                <p class="texto" style="text-align:left" >{{ negocio.direccion }}</p>
+                <br>
+                <h3 class="descripcion text-secondary">Tipo de Negocio</h3>
+                <br>
+
+                {% if receta.tipo %}
+                <p class="texto" style="text-align:left">{{negocio.tiponego.nombre}} </p>
+                {% else %}
+                <p class="texto" style="text-align:left">No hay un tipo asociado a esta receta</p>
+                {% endif %}
+
+                <h3 class="descripcion text-secondary">Comuna</h3>
+                <br>
+
+                {% if receta.tipo %}
+                <p class="texto" style="text-align:left">{{negocio.comuna}} </p>
+                {% else %}
+                <p class="texto" style="text-align:left">No hay un tipo asociado a esta receta</p>
+                {% endif %}
+
+                <h3 class="descripcion text-secondary">Descripcion</h3>
+                <br>
+                <p class="texto" style="text-align:left">{{negocio.descripcion}}</p>
+
+                <h3 class="descripcion text-secondary">Link</h3>
+                <br>
+                <p class="texto" style="text-align:left">{{negocio.web}}</p>
+
+            </div>
+        </div>
+
+        <div class="row p-5">
+            {% for producto in num_producto %}
+            <div class="col-md-4">
+                <div class="card mb-2 " style="background-color: #0c0b09;">
+                    <img class="card-img-top" src=" {{ producto.imagen.url }}" width="300" height="300">
+                    <div class="card-body">
+                        <h5 style="color: #cda45e;" class="card-title text-uppercase">{{ producto.titulo }}</h5>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+</header>
+
+
+{% endblock %}

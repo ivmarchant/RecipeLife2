@@ -66,7 +66,7 @@ class TipoForm(forms.ModelForm):
         fields = ('nombre', 'resumen',)
 
 
-class RecetaForm(ModelForm):
+class ProductoForm(ModelForm):
 
     titulo = forms.CharField(label='Titulo',max_length=200, widget=forms.TextInput(
             attrs={
@@ -80,12 +80,6 @@ class RecetaForm(ModelForm):
                 'class':'form-control' 
             }
             ))
-
-    ingredientes = forms.CharField(label='Ingredientes', max_length=5000,help_text= 'Separe los ingredientes con comas', widget=forms.Textarea(
-        attrs={
-            'class':'form-control'
-        }
-    ))
 
     tipo = forms.ModelChoiceField(queryset=Tipo.objects.all(), label='Tipo',
             widget=forms.Select(
@@ -102,8 +96,41 @@ class RecetaForm(ModelForm):
 
 
     class Meta:
-        model = Receta
-        fields = ('titulo','imagen','ingredientes','tipo','descripcion')
+        model = Producto
+        fields = ('titulo','imagen','tipo','descripcion')
+
+class RecetaForm(ModelForm):
+
+    titulo = forms.CharField(label='Titulo',max_length=200, widget=forms.TextInput(
+            attrs={
+                'class':'form-control'
+            }
+        ))
+    
+    imagen = forms.ImageField(label='Imagen',
+            widget=forms.ClearableFileInput(
+            attrs={
+                'class':'form-control' 
+            }
+            ))
+
+    tipo = forms.ModelChoiceField(queryset=Tipo.objects.all(), label='Tipo',
+            widget=forms.Select(
+            attrs={
+                'class':'form-control' 
+            }
+            ))
+    
+    descripcion = forms.CharField(label='Descripcion', max_length=5000, widget=forms.Textarea(
+        attrs={
+            'class':'form-control'
+        }
+    ))
+
+
+    class Meta:
+        model = Producto
+        fields = ('titulo','imagen','tipo','descripcion')
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField()

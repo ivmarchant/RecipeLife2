@@ -8,11 +8,10 @@
     <li><a href="#about">Nosotros</a></li>
     <li><a href="#specials">Especiales</a></li>
     <li><a href="#contact">Encuentranos</a></li>
-    <li><a href="{% url 'recetas' %}">Contáctenos</a></li>
+    <li><a href="#contact">Contáctenos</a></li>
     <li><a class="nav-link" href="{% url 'vista_proveedores' %}">Proveedores</a></li>
 
     {% if user.is_authenticated %}
-    {% if user.is_staff %}<li><a href="{% url 'admin' %}">Admin</a></li>{% else %}{% endif %}
     <li class="book-a-table text-center"><a href="#">{{ user.username }}</a></li>
     <li><a href="{% url 'logout'%}?next={{request.path}}">Cerrar sesión</a></li>
 

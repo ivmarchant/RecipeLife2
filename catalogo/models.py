@@ -56,11 +56,10 @@ class Tipo(models.Model):
 		return self.nombre
 
 
-class Receta(models.Model):
+class Producto(models.Model):
 
     titulo = models.CharField(max_length=200)
     imagen = models.ImageField(null=True, blank=True)
-    ingredientes = models.TextField(max_length=300)
     tipo = models.ForeignKey('Tipo', on_delete=models.SET_NULL, null=True, blank=False)
     descripcion = models.TextField(max_length=1000)
 

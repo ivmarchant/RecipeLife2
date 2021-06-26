@@ -1,0 +1,92 @@
+{% extends "base_generic.html" %}
+
+{% block navbar %}
+<nav class="nav-menu d-none d-lg-block">
+    <ul>
+
+        <li><a class="nav-link" href="{% url 'index' %}">Inicio</a></li>
+        <li class="active"><a class="nav-link" href="{% url 'vista_proveedores' %}">Negocios</a></li>
+
+        {% if user.is_authenticated %}
+        {% if user.is_staff %}<li><a href="{% url 'admin' %}">Admin</a></li>{% else %}{% endif %}
+        <li class="book-a-table text-center"><a href="#">{{ user.username }}</a></li>
+        <li><a href="{% url 'logout'%}?next={{request.path}}">Cerrar sesión</a></li>
+
+        {% else %}
+        <li class="book-a-table text-center"><a href="{% url 'login' %}">Iniciar Sesion</a></li>
+        <li><a href="{% url 'registro_usuarios' %}">Registro</a></li>
+
+        {% endif %}
+
+    </ul>
+</nav><!-- .nav-menu -->
+{% endblock %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Recetas</title>
+    <meta name="viewport" content="width=device-width">
+    {% load static %}
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <div class="p-5">
+        <br><br><br>
+        <br><br><br>
+        <br><br><br>
+        <div class="section-title">
+            <h2>Detalle</h2>
+            <p>Recetas</p>
+        </div>
+        <div class="php-email-form">
+            {% if user.is_authenticated %}
+            <a class="btn" href="{% url 'nueva_receta' %}" style="float: left; font-size: 14px; background-color: #cda45e;">Agregar
+                Receta
+                <span class="glyphicon glyphicon-plus"></span></a>
+            {% else %}{% endif %}
+        </div>
+    </div>
+
+    <div class="row p-5">
+        {% for receta in num_recetas %}
+        <div class="col-md-4">
+            <div class="card mb-2 " style="background-color: #0c0b09;">
+                <img class="card-img-top" src=" {{ receta.imagen.url }}" width="300" height="300">
+                <div class="card-body">
+                    <h5 style="color: #cda45e;" class="card-title text-uppercase">{{ receta.titulo }}</h5>
+                    <a href="{% url 'receta_detail' receta.pk %}" class="btn" style="float: right; background-color: #cda45e;">
+                        Ver más
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="row p-5">
+        {% for Negocios in num_negocios %}
+        <div class="col-md-4">
+            <div class="card mb-2 " style="background-color: #0c0b09;">
+                <img class="card-img-top" src=" {{ Negocios.imagen.url }}" width="300" height="300">
+                <div class="card-body">
+                    <h5 style="color: #cda45e;" class="card-title text-uppercase">{{ Negocios.nombre }}</h5>
+                    <a href="{% url 'receta_detail' receta.pk %}" class="btn" style="float: right; background-color: #cda45e;">
+                        Ver más
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+</body>
+
+</html>
+
+{% endblock %}
