@@ -1,0 +1,47 @@
+{% extends 'base_generic.html' %}
+
+{% block navbar %}
+<nav class="nav-menu d-none d-lg-block">
+  <ul>
+
+    <li class="active"><a class="nav-link" href="{% url 'index' %}">Inicio</a></li>
+    <li><a class="nav-link" href="{% url 'recetas' %}">Recetas</a></li>
+
+    {% if user.is_authenticated %}
+    {% if user.is_staff %}<li><a href="{% url 'admin' %}">Admin</a></li>{% else %}{% endif %}
+    <li class="book-a-table text-center"><a href="#">{{ user.username }}</a></li>
+    <li><a href="{% url 'logout'%}?next={{request.path}}">Cerrar sesión</a></li>
+
+    {% else %}
+    <li class="book-a-table text-center"><a href="{% url 'login' %}">Iniciar Sesion</a></li>
+    <li><a href="{% url 'registro_usuarios' %}">Registro</a></li>
+
+    {% endif %}
+
+  </ul>
+</nav><!-- .nav-menu -->
+{% endblock %}
+
+{% block content %}
+<br><br>
+<br><br>
+<br><br>
+<div class="section-title p-5">
+    <h2>Recetas</h2>
+    <p>Agrega tu propia Receta</p>
+</div>
+<div class="d-flex justify-content-center">
+    <form class="form " style="background-color:#cda45e" action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table class="table">
+            {{ form.as_table }}
+        </table>
+
+        <input type="reset" value="Limpiar">
+        <input type="submit" value="Guardar">
+    </form>
+</div>
+
+{{ mensaje }}
+
+{% endblock %}

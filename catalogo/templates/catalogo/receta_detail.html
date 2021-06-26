@@ -1,0 +1,41 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<br><br><br><br><br>
+{% load static %}
+<header class="masthead">
+    <div class="container d-flex flex-column ">
+        <h1 class="page-section-heading text-uppercase text-secondary mb-0"> {{ receta.titulo}}
+
+        </h1>
+
+
+        <div class="container p-5">
+
+            <div class="">
+                <p class="centrado"><img src="{{ receta.imagen.url }}" width="640" height="480"></p>
+                <br>
+                <h3 class="descripcion text-secondary">Ingredientes</h3>
+                <br>
+                <p class="texto" style="text-align:left" >{{ receta.ingredientes }}</p>
+                <br>
+                <h3 class="descripcion text-secondary">Género</h3>
+                <br>
+
+                {% if receta.tipo %}
+                <p class="texto" style="text-align:left">{{receta.tipo.nombre}} </p>
+                {% else %}
+                <p class="texto" style="text-align:left">No hay un tipo asociado a esta receta</p>
+                {% endif %}
+
+                <h3 class="descripcion text-secondary">Descripcion</h3>
+                <br>
+                <p class="texto" style="text-align:left">{{receta.descripcion}}</p>
+
+            </div>
+        </div>
+</header>
+
+
+{% endblock %}

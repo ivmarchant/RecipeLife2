@@ -1,0 +1,73 @@
+{% extends "base_generic.html" %}
+
+{% block navbar %}
+<nav class="nav-menu d-none d-lg-block">
+  <ul>
+
+    <li><a class="nav-link" href="{% url 'index' %}">Inicio</a></li>
+    <li><a class="nav-link" href="{% url 'recetas' %}">Recetas</a></li>
+    <li class="active"><a href="#contact">Contáctenos</a></li>
+
+    {% if user.is_authenticated %}
+    {% if user.is_staff %}<li><a href="{% url 'admin' %}">Admin</a></li>{% else %}{% endif %}
+    <li class="book-a-table text-center"><a href="#">{{ user.username }}</a></li>
+    <li><a href="{% url 'logout'%}?next={{request.path}}">Cerrar sesión</a></li>
+
+    {% else %}
+    <li class="book-a-table text-center"><a href="{% url 'login' %}">Iniciar Sesion</a></li>
+    <li><a href="{% url 'registro_usuarios' %}">Registro</a></li>
+
+    {% endif %}
+
+  </ul>
+</nav><!-- .nav-menu -->
+{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% load static %}
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+
+    <main id="main">
+        <section>
+            <div class="container">
+                <br><br><br>
+                <br><br><br>
+                <div class="content-center">
+                <section id="contact" class="contact">
+                    <div class="section-title">
+                        <h2>Preguntas</h2>
+                        <p>Preguntas Frecuentes(FAQs)</p>
+                      </div>
+                    </div>
+                </div>
+                <button class="accordion">¿ Que es RecipeLife?</button>
+                <div class="panel">
+                    <p>RecipeLife es un sitio web el cual funciona como un recetario para que asi la gente no tenga que pedir comida ya preparada a domicilio para que asi estos mismo puedan preparar las recetas en sus propias
+                    casas, ademas RecipeLife ofrece la posibilidad de agregar recetas y comentarlas para que asi cada uno comparta su experiencia al momento de realizar las recetas.</p>
+                </div>
+                <script>
+                var acc = document.getElementsByClassName("accordion");
+                var i;
+                for (i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function() {
+                    this.classList.toggle("active2");
+                    var panel = this.nextElementSibling;
+                    if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                    } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                    } 
+                });
+                }
+                </script>
+                </section>
+            </main>           
+</body>
+</html>  
+{% endblock %}

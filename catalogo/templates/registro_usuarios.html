@@ -1,0 +1,47 @@
+{% extends 'base_generic.html' %}
+
+{% block navbar %}
+<nav class="nav-menu d-none d-lg-block">
+  <ul>
+
+    <li><a class="nav-link" href="{% url 'index' %}">Inicio</a></li>
+    <li><a class="nav-link" href="{% url 'recetas' %}">Recetas</a></li>
+
+    {% if user.is_authenticated %}
+    {% if user.is_staff %}<li><a href="{% url 'admin' %}">Admin</a></li>{% else %}{% endif %}
+    <li class="book-a-table text-center"><a href="#">{{ user.username }}</a></li>
+    <li><a href="{% url 'logout'%}?next={{request.path}}">Cerrar sesión</a></li>
+
+    {% else %}
+    <li class="book-a-table text-center"><a href="{% url 'login' %}">Iniciar Sesion</a></li>
+    <li class="active"><a href="{% url 'registro_usuarios' %}">Registro</a></li>
+
+    {% endif %}
+
+  </ul>
+</nav><!-- .nav-menu -->
+{% endblock %}
+
+{% block content %}
+<head>
+    {% load static %}
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+<main id="main">
+    <section>
+        <div class="container">
+            <br><br>
+        </div>
+    </section>
+
+</main><!-- End #main -->
+<div class="d-flex justify-content-center text-center">
+    <form class="form" style="background-color:#cda45e" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit" id="submit">Registrarse</button>
+    </form>
+</div>
+
+{% endblock %}

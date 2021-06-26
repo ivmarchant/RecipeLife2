@@ -1,0 +1,49 @@
+{% extends "base_generic.html" %}
+
+{% block navbar %}
+<nav class="nav-menu d-none d-lg-block">
+  <ul>
+
+    <li><a class="nav-link" href="{% url 'index' %}">Inicio</a></li>
+    <li><a class="nav-link" href="{% url 'recetas' %}">Recetas</a></li>
+
+    {% if user.is_authenticated %}
+    {% if user.is_staff %}<li class="active"><a href="{% url 'admin' %}">Admin</a></li>{% else %}{% endif %}
+    {% else %}{% endif %}
+
+  </ul>
+</nav><!-- .nav-menu -->
+{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {% load static %}
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+<body>
+    <main id="main">
+        <section>
+            <div class="container">
+                <br><br><br>
+                <br><br><br>
+                <div class="content-center">
+                <section id="contact" class="contact">
+                    <div class="section-title">
+                        <h2>Bienvenido Administrador</h2>
+                        <p>{{ user.username }}</p>
+                        <br><br><br><br>
+                        <div class="text-center"><a class="p-5" href="{% url 'listado_usuarios' %}">Lista de usuarios</a>
+
+                            <a href="{% url 'listado_recetas' %}">Lista de Recetas</a></div>
+                    </div>
+                </section>
+
+    </main><!-- End #main -->
+</body>
+
+</html>
+
+{% endblock %}
