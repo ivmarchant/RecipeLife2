@@ -9,7 +9,7 @@
     <li><a href="#specials">Especiales</a></li>
     <li><a href="#contact">Encuentranos</a></li>
     <li><a href="{% url 'contacto' %}">Contáctenos</a></li>
-    <li><a class="nav-link" href="{% url 'recetas' %}">Recetas</a></li>
+    <li><a class="nav-link" href="{% url 'vista_proveedores' %}">Proveedores</a></li>
 
     {% if user.is_authenticated %}
     {% if user.is_staff %}<li><a href="{% url 'admin' %}">Admin</a></li>{% else %}{% endif %}
@@ -18,7 +18,7 @@
 
     {% else %}
     <li class="book-a-table text-center"><a href="{% url 'login' %}">Iniciar Sesion</a></li>
-    <li><a href="{% url 'registro_usuarios' %}">Registro</a></li>
+
 
     {% endif %}
 
@@ -43,7 +43,7 @@
     <div class="container position-relative text-center text-lg-left" data-aos="zoom-in" data-aos-delay="100">
       <div class="row">
         <div class="col-lg-8">
-          <h1>Bienvenido a <span>RecipeLife</span></h1>
+          <h1>Bienvenido a <span>SupplierHunter</span></h1>
 
           <div class="btns">
             <a href="{% url 'recetas' %}" class="btn-menu animated fadeInUp scrollto">Recetas</a>
@@ -64,7 +64,7 @@
         <div class="row">
           <div class="col-lg-6 order-1 order-lg-2" data-aos="zoom-in" data-aos-delay="100">
             <div class="about-img">
-              <img src="{% static 'img/Pastelito.jpg' %}" alt="">
+              <img src="{% static 'img/depositphotos_55683735-stock-photo-groceries-in-wicker-basket.jpg' %}" alt="">
             </div>
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
@@ -125,15 +125,15 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Recetas</h2>
-          <p>Recetas mejor puntuadas</p>
+          <h2>Proveedores</h2>
+          <p>Principales Proveedores de Chile</p>
         </div>
 
         <div class="row" data-aos="fade-up" data-aos-delay="100">
           <div class="col-lg-3">
             <ul class="nav nav-tabs flex-column">
               <li class="nav-item">
-                <a class="nav-link active show" data-toggle="tab" href="#tab-1">Ñoquis con salsa pomodoro</a>
+                <a class="nav-link active show" data-toggle="tab" href="#tab-1">Coca-Cola</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" data-toggle="tab" href="#tab-2">Bavarois de frutilla Chileno</a>
@@ -154,15 +154,14 @@
               <div class="tab-pane active show" id="tab-1">
                 <div class="row">
                   <div class="col-lg-8 details order-2 order-lg-1">
-                    <h3><i>"Un plato tipico de la lejana Italia"</i></h3>
-                    <p class="font-italic">Los Gnocchis o ñoquis en castellano, son un tipo de pasta originaria de
-                      Italia, donde se elaboran principalmente con patata.
-                      Es un plato muy típico de la gastronomía transalpina aunque también está muy presente en otras
-                      cocinas como la argentina, llevados
-                      por los italianos que emigraron al otro lado del Atlántico.</p>
+                    <h3 style="text-align: center;"><i>“Destapa la Felicidad”</i></h3>
+                    <p class="font-italic">Coca-Cola, conocida comúnmente como Coca en muchos países hispanohablantes, 
+                                           es una bebida gaseosa y refrescante vendida a nivel mundial en tiendas, 
+                                           restaurantes y máquinas expendedoras en más de doscientos países o territorios. 
+                                           Es un producto de The Coca-Cola Company, de origen estadounidense.</p>
                   </div>
                   <div class="col-lg-4 text-center order-1 order-lg-2">
-                    <img src="{% static 'img/ñoqui.jpg' %}" alt="" class="img-fluid">
+                    <img src="{% static 'img/coca.jpg' %}" alt="" class="img-fluid">
                   </div>
                 </div>
               </div>

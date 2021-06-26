@@ -4,7 +4,7 @@
     <ul>
   
       <li><a class="nav-link" href="{% url 'index' %}">Inicio</a></li>
-      <li><a class="nav-link" href="{% url 'recetas' %}">Recetas</a></li>
+      <li><a class="nav-link" href="{% url 'vista_proveedores' %}">Negocios</a></li>
       <li class="active"><a href="#contact">Contáctenos</a></li>
   
       {% if user.is_authenticated %}
@@ -22,20 +22,21 @@
   </nav><!-- .nav-menu -->
   {% endblock %}
   {% block content %}
-  <div class="container">
-    <div class="row">
+  <br><br><br>
+  <br><br><br>
+    <div class="row p-5">
         {% for negocio in negocios %}
-            <div class="col-md-4">
-                <div class="card mb-4" style="background-color: #0c0b09;">
-                    <img class="card-img-top" src="{{ negocio.image.url }}" width="25" height="100">
+            <div class="col-md-2" >
+                <div class="card border-secondary mb-3" style="background-color: #0c0b09;">
+                    <img class="card-img-top" src="{{ negocio.image.url }}" width="160" height="180" >
                     <div class="card-body">
-                        <h4  class="card-title"><a href="{% url 'perfil' negocio.user.username %}">#{{ negocio.user.username }}</a></h4>
+                        <h4  class="card-title"><a href="{% url 'perfil' negocio.user.username %}">{{ negocio.nombre }}</a></h4>
                         <a style="color:#cda45e;">{{ negocio.descripcion }}</a>
                     </div>
                 </div>
             </div>
             {% endfor %}
         </div>
-</div>
+
 
   {% endblock %}

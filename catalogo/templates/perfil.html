@@ -5,7 +5,7 @@
   <ul>
 
     <li><a class="nav-link" href="{% url 'index' %}">Inicio</a></li>
-    <li><a class="nav-link" href="{% url 'recetas' %}">Recetas</a></li>
+    <li><a class="nav-link" href="{% url 'vista_proveedores' %}">Negocios</a></li>
     <li class="active"><a href="#contact">Contáctenos</a></li>
 
     {% if user.is_authenticated %}
@@ -24,12 +24,14 @@
 {% endblock %}
 
 {% block content %}
-<div class="row">
-    <div class="col-md-4">
-        <div class="card mb-4">
+<br><br><br>
+<br><br><br>
+<div class="row p-5">
+    <div class="col-md-2">
+        <div class="card border-secondary mb-3 " style="background-color: #0c0b09;">
             <img class="card-img-top" src="{{ user.perfil.image.url }}" alt="Card image">
             <div class="card-body">
-                <h4 class="card-title" color=negro>#{{ user.username }}</h4>
+                <h4 class="card-title" style="color:#cda45e;">👤 {{ user.username }}</h4>
                 <i class="clock"></i>
             </div>
         </div>
