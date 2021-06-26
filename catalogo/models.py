@@ -32,7 +32,7 @@ class Negocio(models.Model):
     direccion = models.TextField(max_length=1000)
     descripcion = models.TextField(max_length=1000)
     web = models.TextField(max_length=1000)
-    imagen = models.ImageField(null=True, blank=True)
+    imagen = models.ImageField(null=True, blank=True, default='descarga.png')
     tipo = models.ForeignKey('TipoNego', on_delete=models.SET_NULL, null=True, blank=False)
     comuna = models.ForeignKey('Comuna', on_delete=models.SET_NULL, null=True, blank=False)
 

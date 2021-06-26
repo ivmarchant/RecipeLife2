@@ -128,6 +128,7 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
@@ -143,3 +144,5 @@ EMAIL_HOST_PASSWORD="recipe_life-1390"
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

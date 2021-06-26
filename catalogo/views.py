@@ -177,16 +177,6 @@ def eliminar_recetas(request, id):
 
 #PROVEDOORES
 
-def listado_negocios(request):
-    negocios= Negocio.objects.all()
-    data = {
-        'negocios':negocios
-    }
-    return render(
-        request,
-        'vista_proveedores.html',data
-    )
-
 def crear_negocios(request):
     data = {
         'form' :NegocioForm()
